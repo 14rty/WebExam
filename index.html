@@ -103,7 +103,7 @@
         <section class="contacts container">
             <div>
                 <div class="py-5">
-                    <h2 class="mb-3">Выбор предприятия общественного питания</h2>
+                    <h2 class="mb-3">Выбор заведения</h2>
                     <div class="heading-line bg-dark"></div>
                     <div class="heading-line "></div>
                 </div> 
@@ -167,15 +167,82 @@
                         
                         <div class="">
                             <span class="invisible">Костыль</span><br>
-                            <input type="button" style="width: 120px;" value="Найти">
+                            <input class="poisk" type="button" style="width: 120px;" value="Найти">
                         </div>
 
                     </div>
+
+                    
                 </div>
+
+
             </div>
+
+            <div class="mt-xl-4">
+                    <div class="d-none d-xl-block">
+                        <div class="row d-flex justify-content-between align-items-start px-3 py-2 border rounded-top">
+                            <div class="col-3">Название</div>
+                            <div class="col-2">Тип</div>
+                            <div class="col-6">Адрес</div>
+                            <div class="col-1">Действия</div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="company-list list-group">
+                            <div id="companyItem-template" class="row list-group-item d-flex justify-content-between align-items-center d-none">
+                                <div class="col-12 col-xl-3 company-name">Название</div>
+                                <div class="col-12 col-xl-2 company-type">Тип</div>
+                                <div class="col-12 col-xl-6 company-address">Адрес</div>
+                                <div class="col-12 col-xl-1 company-buttons d-flex justify-content-end">
+                                    <button class="btn btn-outline-primary btn-sm">Выбрать</button>
+                                </div>
+                                <div class="company-admArea "></div>
+                                <div class="company-district "></div>
+                                <div class="company-discount "></div>
+                                <div class="company-rating ">/100</div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="pagination justify-content-center mt-4">
+                        <li class="page-item">
+                            <a class="page-link" href="#">Предыдущая</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item" aria-current="page">
+                            <a class="page-link" href="#">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Следующая</a>
+                        </li>
+                    </ul>
+                </div>
+
         </section>
         <!-- Конец Формы -->
     </main>
+    <!-- Футер начало -->
+    <footer class="footer">
+
+        <div class="text-center py-4 border-top text-dark">
+            <img src="pics/Jumpy.png" width="60px" alt="logo">
+            <div class="bd-example">
+                <address>
+                    Москва, Никольская 14<br>
+                    <abbr title="Phone">+7</abbr> (999) 333-1414
+                </address>
+                <address>
+                    <a href="mailto:first.last@example.com">info.jumpy@example.com</a>
+                </address>
+            </div>
+        </div>
+        <script src="main.js"></script>
+    </footer>
+    <!-- Футер конец -->
 </body>
 
 </html>
