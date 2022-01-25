@@ -194,7 +194,7 @@
                                 <div class="col-12 col-xl-2 company-type">Тип</div>
                                 <div class="col-12 col-xl-6 company-address">Адрес</div>
                                 <div class="col-12 col-xl-1 company-buttons d-flex justify-content-end">
-                                    <button class="btn btn-outline-primary btn-sm chooseButt">Выбрать</button>
+                                    <button class="btn btn-outline-primary btn-sm chooseButt" >Выбрать</button>
                                 </div>
                                 <div class="company-admArea "></div>
                                 <div class="company-district "></div>
@@ -229,17 +229,19 @@
         <!-- Конец Формы -->
 
         <!-- Меню -->
-        <section class="gal container-fluid bg-light" id="gal">
+        <section class="gal container-fluid bg-light" style="display: none;" id="gal">
             <div class="text-center py-5">
                 <h2 class="mb-3">Меню:</h2>
                 <div class="heading-line mx-auto bg-dark"></div>
             </div>
+
             <div class="row d-flex" style="justify-content: space-around; text-align: center;">
-                <!-- <div class="col-lg-4 col-md-6 p-0 dark">
+                <div class="col-lg-4 col-md-6 p-0 dark">
                     <div class="card-body">
                         <img src="pics/menuPic1Fixed.jpg" width="200px" alt="logo" class="rounded">
                         <h5 class="card-title">Салат "Цезарь"</h5>
-                        <p class="card-text">400Р</p>
+                        <p class="card-text">Классический салат</p>
+                        <p class="card-text" id="set-1"></p>
                         <p>
                             <label for="number"></label>
                             <input type="number" id="number1" min="0">
@@ -247,12 +249,12 @@
                     </div>
                 </div>
                 
-                <div class="col-lg-4 col-md-6 p-0dark">
+                <div class="col-lg-4 col-md-6 p-0 dark">
                     <div class="card-body">
                         <img src="pics/menuPic2Fixed.jpg" width="200px" alt="logo" class="rounded">
-                        <h5 class="card-title ">Панакотта</h5>
-                        <p class="card-text descript"></p>
-                        <p class="card-text">400Р</p>
+                        <h5 class="card-title">Панакотта"</h5>
+                        <p class="card-text">Классический десерт</p>
+                        <p class="card-text" id="set-2" ></p>
                         <p>
                             <label for="number"></label>
                             <input type="number" id="number2" min="0">
@@ -260,18 +262,109 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 p-0dark">
+                <div class="col-lg-4 col-md-6 p-0 dark">
                     <div class="card-body">
                         <img src="pics/menuPic3Fixed.jpg" width="200px" alt="logo" class="rounded">
                         <h5 class="card-title">Паста с сыром</h5>
-                        <p class="card-text">400Р</p>
+                        <p class="card-text">Как в общаге</p>
+                        <p class="card-text" id="set-3" ></p>
                         <p>
                             <label for="number"></label>
                             <input type="number" id="number3" min="0">
                         </p>
                     </div>
-                </div> -->
+                </div>
 
+                <div class="col-lg-4 col-md-6 p-0 dark">
+                    <div class="card-body">
+                        <img src="pics/menuPic4Fixed.jpg" width="200px" alt="logo" class="rounded">
+                        <h5 class="card-title">Гренки с чесноком</h5>
+                        <p class="card-text">Идеальная закуска</p>
+                        <p class="card-text" id="set-4" ></p>
+                        <p>
+                            <label for="number"></label>
+                            <input type="number" id="number4" min="0">
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 p-0 dark">
+                    <div class="card-body">
+                        <img src="pics/menuPic5Fixed.jpg" width="200px" alt="logo" class="rounded">
+                        <h5 class="card-title">Светлое пиво</h5>
+                        <p class="card-text">Освежающий в летний день напиток</p>
+                        <p class="card-text" id="set-5" ></p>
+                        <p>
+                            <label for="number"></label>
+                            <input type="number" id="number5" min="0">
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 p-0 dark">
+                    <div class="card-body">
+                        <img src="pics/menuPic6Fixed.jpg" width="200px" alt="logo" class="rounded">
+                        <h5 class="card-title">Темное пиво</h5>
+                        <p class="card-text">Для того, чтобы проникнуться бесконечно вечным</p>
+                        <p class="card-text" id="set-6" ></p>
+                        <p>
+                            <label for="number"></label>
+                            <input type="number" id="number6" min="0">
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 p-0 dark">
+                    <div class="card-body">
+                        <img src="pics/menuPic7Fixed.jpg" width="200px" alt="logo" class="rounded">
+                        <h5 class="card-title">Живое пиво</h5>
+                        <p class="card-text">Животворящий нектар Богов</p>
+                        <p class="card-text" id="set-7" ></p>
+                        <p>
+                            <label for="number"></label>
+                            <input type="number" id="number7" min="0">
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 p-0 dark">
+                    <div class="card-body">
+                        <img src="pics/menuPic8Fixed.jpg" width="200px" alt="logo" class="rounded">
+                        <h5 class="card-title">Ореховый микс</h5>
+                        <p class="card-text">Фисташки, фундук, кешью</p>
+                        <p class="card-text" id="set-8" ></p>
+                        <p>
+                            <label for="number"></label>
+                            <input type="number" id="number8" min="0">
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 p-0 dark">
+                    <div class="card-body">
+                        <img src="pics/menuPic9Fixed.jpg" width="200px" alt="logo" class="rounded">
+                        <h5 class="card-title">Котлета с пюре</h5>
+                        <p class="card-text">Как в родной деревне</p>
+                        <p class="card-text" id="set-9" ></p>
+                        <p>
+                            <label for="number"></label>
+                            <input type="number" id="number9" min="0">
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 p-0 dark">
+                    <div class="card-body">
+                        <img src="pics/menuPic10Fixed.jpg" width="200px" alt="logo" class="rounded">
+                        <h5 class="card-title">Нарезка из оругцов</h5>
+                        <p class="card-text">Сердито</p>
+                        <p class="card-text" id="set-10" ></p>
+                        <p>
+                            <label for="number"></label>
+                            <input type="number" id="number10" min="0">
+                        </p>
+                    </div>
+                </div>
             </div>
         </section>
         <!-- Конец меню -->

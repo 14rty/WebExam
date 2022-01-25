@@ -2,9 +2,12 @@ window.onload = function () {
     let findButt = document.querySelector('.poisk');
     findButt.addEventListener('click', GetInformationAboutCom); 
     // GetInformationAboutCom()
-    let chooseButt = document.querySelector('.chooseButt');
-    chooseButt.addEventListener('click', createMenu);
+    
+    
+ 
 }
+
+let data
 
 function GetInformationAboutCom() {
     let url_add = "http://exam-2022-1-api.std-900.ist.mospolytech.ru/api/restaurants";
@@ -17,8 +20,11 @@ function GetInformationAboutCom() {
     xhr.onload = function () {
         console.log(this.response);
         sortComElements(this.response);
+        data = this.response
     }
     xhr.send();
+
+    
 }
 
 function sortComElements(array) {
@@ -46,7 +52,11 @@ function createComBlock(company) {
     item.querySelector('.company-rating').innerHTML = "Рейтинг " + company['rate']/20;
     item.setAttribute('id', company['id']);
     item.classList.remove('d-none');
+
+    item.querySelector(".chooseButt").addEventListener('click', event => {createMenu(company['id'])} )
     return item;
+
+    
 }
 
 function sortByRate(array) { 
@@ -61,59 +71,27 @@ function sortByRate(array) {
         return 0;
       });
 }
-function createMenu(event){
-    let id = event.target.closest(".list-group-item").id;
-    alert(id);
+function createMenu(id){
+    // alert(id);
+    let menu = document.getElementById('gal');
+    menu.style.display = 'block';
+    console.log(data);
+    data.forEach(element => {
+        if (element['id'] == id ){
+            document.getElementById('set-1').innerHTML = element['set_1'] + " Р";
+            document.getElementById('set-2').innerHTML = element['set_2'] + " Р";
+            document.getElementById('set-3').innerHTML = element['set_3'] + " Р";
+            document.getElementById('set-4').innerHTML = element['set_4'] + " Р";
+            document.getElementById('set-5').innerHTML = element['set_5'] + " Р";
+            document.getElementById('set-6').innerHTML = element['set_6'] + " Р";
+            document.getElementById('set-7').innerHTML = element['set_7'] + " Р";
+            document.getElementById('set-8').innerHTML = element['set_8'] + " Р";
+            document.getElementById('set-9').innerHTML = element['set_9'] + " Р";
+            document.getElementById('set-10').innerHTML = element['set_10'] + " Р";
+            
+
+        } 
+    }); 
 }
-let menu = [
-    {
-        "position" : "Салат Цезарь",
-        "description" : "Классический салат",
-        "image" : "pics/menuPic1FIxed.jpg"
-    },
-    {
-        "position" : "Панакотта",
-        "description" : "Классический десерт",
-        "image" : "pics/menuPic2Fixed.jpg"
-    },
-    {
-        "position" : "Паста с сыром",
-        "description" : "Как в общаге",
-        "image" : "pics/menuPic3FIxed.jpg"
-    },
-    {
-        "position" : "Гренки с чесноком",
-        "description" : "Идеальная закуска",
-        "image" : "pics/menuPic4FIxed.jpg"
-    },
-    {
-        "position" : "Светлое Пиво",
-        "description" : "Освежающий в летний день напиток",
-        "image" : "pics/menuPic5FIxed.jpg"
-    },
-    {
-        "position" : "Темное Пиво",
-        "description" : "Для того, чтобы проникнуться бесконечно вечным",
-        "image" : "pics/menuPic6FIxed.jpg"
-    },
-    {
-        "position" : "Живое Пиво",
-        "description" : "Животворящий нектар Богов",
-        "image" : "pics/menuPic7FIxed.jpg"
-    },
-    {
-        "position" : "Ореховый микс",
-        "description" : "Фисташки, фундук, кешью",
-        "image" : "pics/menuPic8FIxed.jpg"
-    },
-    {
-        "position" : "Котлета с пюре",
-        "description" : "Как в родной деревне",
-        "image" : "pics/menuPic9FIxed.jpg"
-    },
-    {
-        "position" : "Нарезанные огурцы",
-        "description" : "Сердито",
-        "image" : "pics/menuPic10FIxed.jpg"
-    }
-]
+
+
