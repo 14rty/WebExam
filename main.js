@@ -1,7 +1,7 @@
 window.onload = function () {
-    let findButt = document.querySelector('.poisk');
-    findButt.addEventListener('click', GetInformationAboutCom); 
-    // GetInformationAboutCom()
+    // let findButt = document.querySelector('.poisk');
+    // findButt.addEventListener('click', GetInformationAboutCom); 
+    GetInformationAboutCom()
     
     
  
