@@ -2,12 +2,33 @@ window.onload = function () {
     // let findButt = document.querySelector('.poisk');
     // findButt.addEventListener('click', GetInformationAboutCom); 
     GetInformationAboutCom()
+    let plusButt = document.querySelectorAll('.pluss');
+    plusButt.forEach(function (btn) {
+        btn.addEventListener('click', addSet)
+    })
+    let minusButt = document.querySelectorAll('.minuss');
+    minusButt.forEach(function (btn) {
+        btn.addEventListener('click', deleteSet)
+    })
     
-    
- 
+}
+get
+let data
+
+function addSet(event) {
+    let ide = event.target.parentNode.getElementsByClassName("span").id
+    // let clicks;
+    // clicks += 1;
+    alert(ide);
+    // document.getElementById(ide).innerHTML = " ";
+    // document.getElementById(ide).innerHTML = clicks;
+    // alert("Hellpw")
 }
 
-let data
+function deleteSet(event) {
+    alert("Hellpw")
+}
+
 
 function GetInformationAboutCom() {
     let url_add = "http://exam-2022-1-api.std-900.ist.mospolytech.ru/api/restaurants";
@@ -75,6 +96,7 @@ function createMenu(id){
     // alert(id);
     let menu = document.getElementById('gal');
     menu.style.display = 'block';
+
     console.log(data);
     data.forEach(element => {
         if (element['id'] == id ){
@@ -92,6 +114,7 @@ function createMenu(id){
 
         } 
     }); 
+    
 }
 
 
