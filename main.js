@@ -2,31 +2,57 @@ window.onload = function () {
     // let findButt = document.querySelector('.poisk');
     // findButt.addEventListener('click', GetInformationAboutCom); 
     GetInformationAboutCom()
-    let plusButt = document.querySelectorAll('.pluss');
-    plusButt.forEach(function (btn) {
-        btn.addEventListener('click', addSet)
+    // let plusButt = document.querySelectorAll('.pluss');
+    // plusButt.forEach(function (btn) {
+    //     btn.addEventListener('click', addSet)
+    // })
+    // let minusButt = document.querySelectorAll('.minuss');
+    // minusButt.forEach(function (btn) {
+    //     btn.addEventListener('click', deleteSet)
+    // })
+    let menuButt = document.querySelectorAll('.menuButt');
+    menuButt.forEach(function (btn) {
+        btn.addEventListener('click', setFunk)
     })
-    let minusButt = document.querySelectorAll('.minuss');
-    minusButt.forEach(function (btn) {
-        btn.addEventListener('click', deleteSet)
-    })
-    
 }
-get
 let data
 
-function addSet(event) {
-    let ide = event.target.parentNode.getElementsByClassName("span").id
-    // let clicks;
-    // clicks += 1;
-    alert(ide);
-    // document.getElementById(ide).innerHTML = " ";
-    // document.getElementById(ide).innerHTML = clicks;
-    // alert("Hellpw")
-}
+// function addSet(event) {
+//     let ide = event.target.parentNode.getElementsByClassName("span").id
+//     // let clicks;
+//     // clicks += 1;
+//     alert(ide);
+//     // document.getElementById(ide).innerHTML = " ";
+//     // document.getElementById(ide).innerHTML = clicks;
+//     // alert("Hellpw")
+// }
 
-function deleteSet(event) {
-    alert("Hellpw")
+// function deleteSet(event) {
+//     alert("Hellpw")
+// }
+
+function setFunk(event) {
+    let oper = event.target.innerHTML;
+    // let idE = event.currentTarget.children('.pole').id;
+    // alert(idE);
+    let pole = event.target.closest('.menuButt').querySelector('.pole');
+    let clicks = 0;
+    switch(oper){
+        case '+':
+            // alert("+")
+                pole.innerHTML = Number(pole.innerHTML) + 1;
+            break
+        case '-':
+            // alert("-")
+                if (pole.innerHTML != 0 && pole.innerHTML != NaN){
+                    pole.innerHTML = Number(pole.innerHTML) - 1;
+                }
+            break
+    }
+    if (pole.innerHTML == "0"){
+        pole.innerHTML = "";
+    }
+    // alert(oper);
 }
 
 

@@ -18,7 +18,7 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
 
-<!-- NavBar -->
+    <!-- NavBar -->
     <header class="header sticky-top">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
@@ -47,11 +47,11 @@
             </div>
         </nav>
     </header>
-<!-- NavBar Ending -->
+    <!-- NavBar Ending -->
     <main>
         <!-- Карусель -->
         <div style="display: flex; justify-content: space-around;" class="py-5">
-            <div id="carouselExampleSlidesOnly" class="carousel slide col-lg-5 col-md-12" data-bs-ride="carousel" >
+            <div id="carouselExampleSlidesOnly" class="carousel slide col-lg-5 col-md-12" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active" data-bs-interval="2200">
                         <img src="pics/fixedpic1.png" class="d-block w-100" alt="...">
@@ -80,7 +80,7 @@
                         <h5 class="card-title">Быстрая доставка</h5>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-4 col-md-6 p-0dark">
                     <div class="card-body">
                         <img src="pics/QA100.png" width="100px" alt="logo">
@@ -106,7 +106,7 @@
                     <h2 class="mb-3">Выбор заведения</h2>
                     <div class="heading-line bg-dark"></div>
                     <div class="heading-line "></div>
-                </div> 
+                </div>
 
                 <div class="d-flex border border-3 flex-column">
 
@@ -116,14 +116,14 @@
                             <p>
                                 <label for="select">Административный округ</label><br>
                                 <select id="select" style="width: 100%;">
-                                <optgroup>
-                                    <option value="">Не выбрано</option>
-                                    <option value="">ЦАО</option>
-                                    <option value="">САО</option>
-                                    <option value="">ЗАО</option>
-                                    <option value="">ЮАО</option>
-                                    <option value="">ВАО</option>
-                                </optgroup>
+                                    <optgroup>
+                                        <option value="">Не выбрано</option>
+                                        <option value="">ЦАО</option>
+                                        <option value="">САО</option>
+                                        <option value="">ЗАО</option>
+                                        <option value="">ЮАО</option>
+                                        <option value="">ВАО</option>
+                                    </optgroup>
                                 </select>
                             </p>
                         </div>
@@ -132,23 +132,23 @@
                             <p>
                                 <label for="select" style="width: 100%;">Район</label><br>
                                 <select id="selec">
-                                <optgroup>
-                                    <option value="">Не вабрано</option>
-                                </optgroup>
+                                    <optgroup>
+                                        <option value="">Не вабрано</option>
+                                    </optgroup>
                                 </select>
                             </p>
                         </div>
                     </div>
 
-                    <div class="d-flex flex-lg-row flex-md-row flex--column justify-content-around py-3" >
+                    <div class="d-flex flex-lg-row flex-md-row flex--column justify-content-around py-3">
 
                         <div class="">
                             <p>
                                 <label for="select">Тип</label><br>
                                 <select id="sele">
-                                <optgroup>
-                                    <option value="">Не вабрано</option>
-                                </optgroup>
+                                    <optgroup>
+                                        <option value="">Не вабрано</option>
+                                    </optgroup>
                                 </select>
                             </p>
                         </div>
@@ -157,14 +157,14 @@
                             <p>
                                 <label for="select">Скидка</label><br>
                                 <select id="sel" style="width: 100%;">
-                                <optgroup>
-                                    <option value="">Не выбрано</option>
-                                    <option value="">Я являюсь студентом ВУЗа</option>
-                                </optgroup>
+                                    <optgroup>
+                                        <option value="">Не выбрано</option>
+                                        <option value="">Я являюсь студентом ВУЗа</option>
+                                    </optgroup>
                                 </select>
                             </p>
                         </div>
-                        
+
                         <div class="">
                             <span class="invisible">Костыль</span><br>
                             <input class="poisk" type="button" style="width: 120px;" value="Найти">
@@ -172,58 +172,60 @@
 
                     </div>
 
-                    
+
                 </div>
 
 
             </div>
             <div id="cafe"></div>
             <div class="mt-xl-4">
-                    <div class="d-none d-xl-block">
-                        <div class="row d-flex justify-content-between align-items-start px-3 py-2 border rounded-top">
-                            <div class="col-3">Название</div>
-                            <div class="col-2">Тип</div>
-                            <div class="col-6">Адрес</div>
-                            <div class="col-1">Действия</div>
-                        </div>
+                <div class="d-none d-xl-block">
+                    <div class="row d-flex justify-content-between align-items-start px-3 py-2 border rounded-top">
+                        <div class="col-3">Название</div>
+                        <div class="col-2">Тип</div>
+                        <div class="col-6">Адрес</div>
+                        <div class="col-1">Действия</div>
                     </div>
-                    <div class="">
-                        <div class="company-list list-group">
-                            <div id="companyItem-template" class="row list-group-item d-flex justify-content-between align-items-center d-none">
-                                <div class="col-12 col-xl-3 company-name">Название</div>
-                                <div class="col-12 col-xl-2 company-type">Тип</div>
-                                <div class="col-12 col-xl-6 company-address">Адрес</div>
-                                <div class="col-12 col-xl-1 company-buttons d-flex justify-content-end">
-                                    <a href="#gal"><button class="btn btn-outline-primary btn-sm chooseButt" >Выбрать</button></a>
-                                </div>
-                                <div class="company-admArea "></div>
-                                <div class="company-district "></div>
-                                <div class="company-discount "></div>
-                                <div class="company-rating "></div>
-                            </div>
-                        </div>
-                    </div>
-                    <ul class="pagination justify-content-center mt-4">
-                        <li class="page-item">
-                            <a class="page-link pag-butt-back" href="#cafe">Предыдущая</a>
-                        </li>
-                        <li class="page-item pag-butt-1">
-                            <a class="page-link" href="#cafe">1</a>
-                        </li>
-                        <li class="page-item pag-butt-2" aria-current="page">
-                            <a class="page-link" href="#cafe">2</a>
-                        </li>
-                        <li class="page-item pag-butt-3">
-                            <a class="page-link" href="#cafe">3</a>
-                        </li>
-                        <li class="page-item pag-butt-4">
-                            <a class="page-link" href="#cafe">4</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link pag-butt-next" href="#cafe">Следующая</a>
-                        </li>
-                    </ul>
                 </div>
+                <div class="">
+                    <div class="company-list list-group">
+                        <div id="companyItem-template"
+                            class="row list-group-item d-flex justify-content-between align-items-center d-none">
+                            <div class="col-12 col-xl-3 company-name">Название</div>
+                            <div class="col-12 col-xl-2 company-type">Тип</div>
+                            <div class="col-12 col-xl-6 company-address">Адрес</div>
+                            <div class="col-12 col-xl-1 company-buttons d-flex justify-content-end">
+                                <a href="#gal"><button
+                                        class="btn btn-outline-primary btn-sm chooseButt">Выбрать</button></a>
+                            </div>
+                            <div class="company-admArea "></div>
+                            <div class="company-district "></div>
+                            <div class="company-discount "></div>
+                            <div class="company-rating "></div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="pagination justify-content-center mt-4">
+                    <li class="page-item">
+                        <a class="page-link pag-butt-back" href="#cafe">Предыдущая</a>
+                    </li>
+                    <li class="page-item pag-butt-1">
+                        <a class="page-link" href="#cafe">1</a>
+                    </li>
+                    <li class="page-item pag-butt-2" aria-current="page">
+                        <a class="page-link" href="#cafe">2</a>
+                    </li>
+                    <li class="page-item pag-butt-3">
+                        <a class="page-link" href="#cafe">3</a>
+                    </li>
+                    <li class="page-item pag-butt-4">
+                        <a class="page-link" href="#cafe">4</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link pag-butt-next" href="#cafe">Следующая</a>
+                    </li>
+                </ul>
+            </div>
 
         </section>
         <!-- Конец Формы -->
@@ -246,28 +248,30 @@
                             <label for="number"></label>
                             <input type="number" id="number1" min="0">
                         </p> -->
-                        <div class="btn-toolbar mb-3 justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
-                            <div class="btn-group me-2" role="group" aria-label="First group">
-                            <button type="button" class="btn btn-outline-secondary text-danger minuss">-</button>
-                            <span id="NO1" type="button" class="btn btn-outline-secondary pole"> </span>
-                            <button type="button" class="btn btn-outline-secondary text-success pluss">+</button>
+                        <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
+                            aria-label="Toolbar with button groups">
+                            <div class="btn-group me-2 menuButt" role="group" aria-label="First group">
+                                <button type="button" class="btn btn-outline-secondary text-danger minuss">-</button>
+                                <span id="NO1" type="button" class="btn btn-outline-secondary pole"> </span>
+                                <button type="button" class="btn btn-outline-secondary text-success pluss">+</button>
                             </div>
                         </div>
 
                     </div>
                 </div>
-                
+
                 <div class="col-lg-4 col-md-6 p-0 dark">
                     <div class="card-body">
                         <img src="pics/menuPic2Fixed.jpg" width="200px" alt="logo" class="rounded">
                         <h5 class="card-title">Панакотта"</h5>
                         <p class="card-text">Классический десерт</p>
-                        <p class="card-text" id="set-2" ></p>
-                        <div class="btn-toolbar mb-3 justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
-                            <div class="btn-group me-2" role="group" aria-label="First group">
-                            <button type="button" class="btn btn-outline-secondary text-danger minuss">-</button>
-                            <span id="NO2" type="button" class="btn btn-outline-secondary"> </span>
-                            <button type="button" class="btn btn-outline-secondary text-success pluss">+</button>
+                        <p class="card-text" id="set-2"></p>
+                        <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
+                            aria-label="Toolbar with button groups">
+                            <div class="btn-group me-2 menuButt" role="group" aria-label="First group">
+                                <button type="button" class="btn btn-outline-secondary text-danger minuss">-</button>
+                                <span id="NO2" type="button" class="btn btn-outline-secondary pole"> </span>
+                                <button type="button" class="btn btn-outline-secondary text-success pluss">+</button>
                             </div>
                         </div>
                     </div>
@@ -278,12 +282,13 @@
                         <img src="pics/menuPic3Fixed.jpg" width="200px" alt="logo" class="rounded">
                         <h5 class="card-title">Паста с сыром</h5>
                         <p class="card-text">Как в общаге</p>
-                        <p class="card-text" id="set-3" ></p>
-                        <div class="btn-toolbar mb-3 justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
-                            <div class="btn-group me-2" role="group" aria-label="First group">
-                            <button type="button" class="btn btn-outline-secondary text-danger minuss">-</button>
-                            <span id="NO3" type="button" class="btn btn-outline-secondary"> </span>
-                            <button type="button" class="btn btn-outline-secondary text-success pluss">+</button>
+                        <p class="card-text" id="set-3"></p>
+                        <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
+                            aria-label="Toolbar with button groups">
+                            <div class="btn-group me-2 menuButt" role="group" aria-label="First group">
+                                <button type="button" class="btn btn-outline-secondary text-danger minuss">-</button>
+                                <span id="NO3" type="button" class="btn btn-outline-secondary pole"> </span>
+                                <button type="button" class="btn btn-outline-secondary text-success pluss">+</button>
                             </div>
                         </div>
                     </div>
@@ -294,12 +299,13 @@
                         <img src="pics/menuPic4Fixed.jpg" width="200px" alt="logo" class="rounded">
                         <h5 class="card-title">Гренки с чесноком</h5>
                         <p class="card-text">Идеальная закуска</p>
-                        <p class="card-text" id="set-4" ></p>
-                        <div class="btn-toolbar mb-3 justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
-                            <div class="btn-group me-2" role="group" aria-label="First group">
-                            <button type="button" class="btn btn-outline-secondary text-danger minuss">-</button>
-                            <span id="NO4" type="button" class="btn btn-outline-secondary"> </span>
-                            <button type="button" class="btn btn-outline-secondary text-success pluss">+</button>
+                        <p class="card-text" id="set-4"></p>
+                        <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
+                            aria-label="Toolbar with button groups">
+                            <div class="btn-group me-2 menuButt" role="group" aria-label="First group">
+                                <button type="button" class="btn btn-outline-secondary text-danger minuss">-</button>
+                                <span id="NO4" type="button" class="btn btn-outline-secondary pole"> </span>
+                                <button type="button" class="btn btn-outline-secondary text-success pluss">+</button>
                             </div>
                         </div>
                     </div>
@@ -310,12 +316,13 @@
                         <img src="pics/menuPic5Fixed.jpg" width="200px" alt="logo" class="rounded">
                         <h5 class="card-title">Светлое пиво</h5>
                         <p class="card-text">Освежающий в летний день напиток</p>
-                        <p class="card-text" id="set-5" ></p>
-                        <div class="btn-toolbar mb-3 justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
-                            <div class="btn-group me-2" role="group" aria-label="First group">
-                            <button type="button" class="btn btn-outline-secondary text-danger minuss">-</button>
-                            <span id="NO5" type="button" class="btn btn-outline-secondary"> </span>
-                            <button type="button" class="btn btn-outline-secondary text-success pluss">+</button>
+                        <p class="card-text" id="set-5"></p>
+                        <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
+                            aria-label="Toolbar with button groups">
+                            <div class="btn-group me-2 menuButt" role="group" aria-label="First group">
+                                <button type="button" class="btn btn-outline-secondary text-danger minuss">-</button>
+                                <span id="NO5" type="button" class="btn btn-outline-secondary pole"> </span>
+                                <button type="button" class="btn btn-outline-secondary text-success pluss">+</button>
                             </div>
                         </div>
                     </div>
@@ -326,12 +333,13 @@
                         <img src="pics/menuPic6Fixed.jpg" width="200px" alt="logo" class="rounded">
                         <h5 class="card-title">Темное пиво</h5>
                         <p class="card-text">Для того, чтобы проникнуться бесконечно вечным</p>
-                        <p class="card-text" id="set-6" ></p>
-                        <div class="btn-toolbar mb-3 justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
-                            <div class="btn-group me-2" role="group" aria-label="First group">
-                            <button type="button" class="btn btn-outline-secondary text-danger minuss">-</button>
-                            <span id="NO6" type="button" class="btn btn-outline-secondary"> </span>
-                            <button type="button" class="btn btn-outline-secondary text-success pluss">+</button>
+                        <p class="card-text" id="set-6"></p>
+                        <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
+                            aria-label="Toolbar with button groups">
+                            <div class="btn-group me-2 menuButt" role="group" aria-label="First group">
+                                <button type="button" class="btn btn-outline-secondary text-danger minuss">-</button>
+                                <span id="NO6" type="button" class="btn btn-outline-secondary pole"> </span>
+                                <button type="button" class="btn btn-outline-secondary text-success pluss">+</button>
                             </div>
                         </div>
                     </div>
@@ -342,12 +350,13 @@
                         <img src="pics/menuPic7Fixed.jpg" width="200px" alt="logo" class="rounded">
                         <h5 class="card-title">Живое пиво</h5>
                         <p class="card-text">Животворящий нектар Богов</p>
-                        <p class="card-text" id="set-7" ></p>
-                        <div class="btn-toolbar mb-3 justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
-                            <div class="btn-group me-2" role="group" aria-label="First group">
-                            <button type="button" class="btn btn-outline-secondary text-danger minuss">-</button>
-                            <span id="NO7" type="button" class="btn btn-outline-secondary"> </span>
-                            <button type="button" class="btn btn-outline-secondary text-success pluss">+</button>
+                        <p class="card-text" id="set-7"></p>
+                        <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
+                            aria-label="Toolbar with button groups">
+                            <div class="btn-group me-2 menuButt" role="group" aria-label="First group">
+                                <button type="button" class="btn btn-outline-secondary text-danger minuss">-</button>
+                                <span id="NO7" type="button" class="btn btn-outline-secondary pole"> </span>
+                                <button type="button" class="btn btn-outline-secondary text-success pluss">+</button>
                             </div>
                         </div>
                     </div>
@@ -358,12 +367,13 @@
                         <img src="pics/menuPic8Fixed.jpg" width="200px" alt="logo" class="rounded">
                         <h5 class="card-title">Ореховый микс</h5>
                         <p class="card-text">Фисташки, фундук, кешью</p>
-                        <p class="card-text" id="set-8" ></p>
-                        <div class="btn-toolbar mb-3 justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
-                            <div class="btn-group me-2" role="group" aria-label="First group">
-                            <button type="button" class="btn btn-outline-secondary text-danger minuss">-</button>
-                            <span id="NO8" type="button" class="btn btn-outline-secondary"> </span>
-                            <button type="button" class="btn btn-outline-secondary text-success pluss">+</button>
+                        <p class="card-text" id="set-8"></p>
+                        <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
+                            aria-label="Toolbar with button groups">
+                            <div class="btn-group me-2 menuButt" role="group" aria-label="First group">
+                                <button type="button" class="btn btn-outline-secondary text-danger minuss">-</button>
+                                <span id="NO8" type="button" class="btn btn-outline-secondary pole"> </span>
+                                <button type="button" class="btn btn-outline-secondary text-success pluss">+</button>
                             </div>
                         </div>
                     </div>
@@ -374,12 +384,13 @@
                         <img src="pics/menuPic9Fixed.jpg" width="200px" alt="logo" class="rounded">
                         <h5 class="card-title">Котлета с пюре</h5>
                         <p class="card-text">Как в родной деревне</p>
-                        <p class="card-text" id="set-9" ></p>
-                        <div class="btn-toolbar mb-3 justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
-                            <div class="btn-group me-2" role="group" aria-label="First group">
-                            <button type="button" class="btn btn-outline-secondary text-danger minuss">-</button>
-                            <span id="NO9" type="button" class="btn btn-outline-secondary"> </span>
-                            <button type="button" class="btn btn-outline-secondary text-success pluss">+</button>
+                        <p class="card-text" id="set-9"></p>
+                        <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
+                            aria-label="Toolbar with button groups">
+                            <div class="btn-group me-2 menuButt" role="group" aria-label="First group">
+                                <button type="button" class="btn btn-outline-secondary text-danger minuss">-</button>
+                                <span id="NO9" type="button" class="btn btn-outline-secondary pole"> </span>
+                                <button type="button" class="btn btn-outline-secondary text-success pluss">+</button>
                             </div>
                         </div>
                     </div>
@@ -390,12 +401,13 @@
                         <img src="pics/menuPic10Fixed.jpg" width="200px" alt="logo" class="rounded">
                         <h5 class="card-title">Нарезка из оругцов</h5>
                         <p class="card-text">Сердито</p>
-                        <p class="card-text" id="set-10" ></p>
-                        <div class="btn-toolbar mb-3 justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
-                            <div class="btn-group me-2" role="group" aria-label="First group">
-                            <button type="button" class="btn btn-outline-secondary text-danger minuss">-</button>
-                            <span id="NO10" type="button" class="btn btn-outline-secondary"> </span>
-                            <button type="button" class="btn btn-outline-secondary text-success pluss">+</button>
+                        <p class="card-text" id="set-10"></p>
+                        <div class="btn-toolbar mb-3 justify-content-center" role="toolbar"
+                            aria-label="Toolbar with button groups">
+                            <div class="btn-group me-2 menuButt" role="group" aria-label="First group">
+                                <button type="button" class="btn btn-outline-secondary text-danger minuss">-</button>
+                                <span id="NO10" type="button" class="btn btn-outline-secondary pole"> </span>
+                                <button type="button" class="btn btn-outline-secondary text-success pluss">+</button>
                             </div>
                         </div>
                     </div>
@@ -410,30 +422,30 @@
                 <h2 class="mb-3" style="text-align: center">Дополнительные опции</h2>
                 <div class="heading-line mx-auto bg-dark"></div>
                 <div class="heading-line mx-auto"></div>
-            </div> 
+            </div>
             <div class="d-flex row justify-content-around border border-4 border-bottom-0">
                 <div style="max-width: fit-content;">
                     <label>
-                        
+
                         Я студент ВУЗа
                     </label>
                     <input type="checkbox" value="">
                 </div>
                 <div style="max-width: fit-content;">
                     <label>
-                        
+
                         В два раза больше
                     </label>
                     <input type="checkbox" value="">
                 </div>
             </div>
-           
+
             <div class="d-flex row justify-content-between    my-3 py-2 px-2 border border-4 border-top-0">
                 <h1>Итого:<span class="price fs-1"></span></h1>
                 <input type="button" value="Оформить заказ">
             </div>
-                
-            
+
+
         </section>
         <!-- Конец цены -->
     </main>
