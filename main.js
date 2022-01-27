@@ -1,35 +1,22 @@
+let maketOfDude
 window.onload = function () {
     // let findButt = document.querySelector('.poisk');
     // findButt.addEventListener('click', GetInformationAboutCom); 
-    GetInformationAboutCom()
-    // let plusButt = document.querySelectorAll('.pluss');
-    // plusButt.forEach(function (btn) {
-    //     btn.addEventListener('click', addSet)
-    // })
-    // let minusButt = document.querySelectorAll('.minuss');
-    // minusButt.forEach(function (btn) {
-    //     btn.addEventListener('click', deleteSet)
-    // })
+    maketOfDude = document.getElementById('companyItem-template').cloneNode(true);
+
+    GetInformationAboutCom();
+    console.log(maketOfDude);
+    addListenerFindBtn();
+
     let menuButt = document.querySelectorAll('.menuButt');
     menuButt.forEach(function (btn) {
         btn.addEventListener('click', setFunk)
     })
+
 }
+
 let data
 
-// function addSet(event) {
-//     let ide = event.target.parentNode.getElementsByClassName("span").id
-//     // let clicks;
-//     // clicks += 1;
-//     alert(ide);
-//     // document.getElementById(ide).innerHTML = " ";
-//     // document.getElementById(ide).innerHTML = clicks;
-//     // alert("Hellpw")
-// }
-
-// function deleteSet(event) {
-//     alert("Hellpw")
-// }
 
 function setFunk(event) {
     let oper = event.target.innerHTML;
@@ -90,6 +77,8 @@ function sortComElements(array) {
 
 function createComBlock(company) {
     let item = document.getElementById('companyItem-template').cloneNode(true);
+    // let item = maketOfDude.cloneNode(true);
+    
     item.querySelector('.company-name').innerHTML = company['name'];
     item.querySelector('.company-type').innerHTML = company['typeObject'];
     item.querySelector('.company-address').innerHTML = company['address'];
@@ -99,8 +88,30 @@ function createComBlock(company) {
     item.querySelector('.company-rating').innerHTML = "Рейтинг " + company['rate']/20;
     item.setAttribute('id', company['id']);
     item.classList.remove('d-none');
-
     item.querySelector(".chooseButt").addEventListener('click', event => {createMenu(company['id'])} )
+    item.classList.add("new"); //класс для последующего удаления в использовании фильтров
+    return item;
+
+    
+}
+
+function createComBlockforFilter(company) {
+    console.log(maketOfDude);
+    // let item = document.getElementById('companyItem-template').cloneNode(true);
+    let item = maketOfDude.cloneNode(true);
+    item.querySelector('.company-name').innerHTML = company['name'];
+    item.querySelector('.company-type').innerHTML = company['typeObject'];
+    item.querySelector('.company-address').innerHTML = company['address'];
+    item.querySelector('.company-admArea').innerHTML = company['admArea'];
+    item.querySelector('.company-district').innerHTML = company['district'];
+    item.querySelector('.company-discount').innerHTML = company['socialDiscount'];
+    item.querySelector('.company-rating').innerHTML = "Рейтинг " + company['rate']/20;
+    item.setAttribute('id', company['id']);
+    item.classList.remove('d-none');
+    
+    item.querySelector(".chooseButt").addEventListener('click', event => {createMenu(company['id'])} )
+    item.classList.add("new"); //класс для последующего удаления в использовании фильтров
+    console.log(item);
     return item;
 
     
@@ -141,6 +152,92 @@ function createMenu(id){
         } 
     }); 
     
+}
+
+function addListenerFindBtn() {
+
+    const divs = document.querySelectorAll('.poisk');
+    divs.forEach(el => el.addEventListener('click', event => {
+        var filter1 = document.getElementById("select");
+        var area = filter1.options[filter1.selectedIndex].text;
+
+        var filter2 = document.getElementById("selec");
+        var district = filter2.options[filter2.selectedIndex].text;
+
+        var filter3 = document.getElementById("sele");
+        var type = filter3.options[filter3.selectedIndex].text;
+
+        var filter4 = document.getElementById("sel");
+        var discount = filter4.options[filter4.selectedIndex].text;
+
+        sortArray(data, district, area, type, discount)
+    }));
+}
+
+function sortArray(array, district, area, type, discount) {
+    let companyList = document.querySelector('.company-list');
+    // companyList.remove(".new");
+    ///todo нужно очисть массив от прошлых данных companyList.remove()
+    let activeCounter = 0// это счетчик именно элементов массива которые удовлетворяют сортировки
+    let counter = 0// индек элемента в массиве
+    companyList.innerHTML = "";
+    while (activeCounter < 20 && counter < array.length - 2) {
+        counter = counter + 1
+        let current = array[counter + 1]
+        // if (current['district'] == district
+        //     && current['admArea'] == area
+        //     && current['typeObject'] == type
+        //     && current['socialDiscount'] == discount) {
+        //     activeCounter = activeCounter + 1
+        //     companyList.append(createComBlock(array[counter]))
+        // }
+        let point = 0
+
+        
+        
+        console.log(current['district'], current['admArea'], current['typeObject'], current['socialDiscount'] );
+        console.log(district, area, type, discount);
+
+        if(district == "Не выбрано"){
+            point = point + 1 
+        }
+        else{
+            if(current['district'] == district) {
+            point = point + 1
+            }
+        }
+        if(area == "Не выбрано"){
+            point = point + 1 
+        }
+        else{
+            if(current['admArea'] == area) {
+            point = point + 1
+            }
+        }
+        if(type == "Не выбрано"){
+            point = point + 1 
+        }
+        else{
+            if(current['typeObject'] == type) {
+            point = point + 1
+            }
+        }
+        if(discount == "Не выбрано"){
+            point = point + 1 
+        }
+        else{
+            if(current['socialDiscount'] == discount) {
+            point = point + 1
+            }
+        }
+        
+        if(point == 4){ 
+            console.log(maketOfDude);
+            activeCounter = activeCounter + 1
+            companyList.append(createComBlockforFilter(array[counter + 1]))
+            console.log("joopa")
+        }
+    }
 }
 
 
