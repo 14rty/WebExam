@@ -1,44 +1,57 @@
 let maketOfDude
+let currentCom = 0;
 window.onload = function () {
     // let findButt = document.querySelector('.poisk');
     // findButt.addEventListener('click', GetInformationAboutCom); 
     maketOfDude = document.getElementById('companyItem-template').cloneNode(true);
 
     GetInformationAboutCom();
-    console.log(maketOfDude);
+// console.log(maketOfDude);
     addListenerFindBtn();
+
+    document.getElementById('socialka').addEventListener('change', socialGay);
 
     let menuButt = document.querySelectorAll('.menuButt');
     menuButt.forEach(function (btn) {
         btn.addEventListener('click', setFunk)
     })
-
 }
 
 let data
-
+let globSum
 
 function setFunk(event) {
     let oper = event.target.innerHTML;
-    // let idE = event.currentTarget.children('.pole').id;
-    // alert(idE);
     let pole = event.target.closest('.menuButt').querySelector('.pole');
-    let clicks = 0;
+    let price = Number(String(event.target.closest('.card-body').querySelector('.price').innerHTML).slice(0, -2));
+    let summary = document.getElementById('summary');
     switch(oper){
         case '+':
             // alert("+")
                 pole.innerHTML = Number(pole.innerHTML) + 1;
+
+                // alert(summary.innerHTML);
+                summary.innerHTML = Number(summary.innerHTML) + price ;
+                globSum = summary.innerHTML;
+                // alert(summary.innerHTML);
             break
         case '-':
             // alert("-")
                 if (pole.innerHTML != 0 && pole.innerHTML != NaN){
                     pole.innerHTML = Number(pole.innerHTML) - 1;
+
+                    // alert(summary.innerHTML);
+                    summary.innerHTML = Number(summary.innerHTML) - price ;
+                    globSum = summary.innerHTML;
+                    // alert(summary.innerHTML);
                 }
             break
     }
     if (pole.innerHTML == "0"){
         pole.innerHTML = "";
     }
+    
+
     // alert(oper);
 }
 
@@ -58,6 +71,38 @@ function GetInformationAboutCom() {
     }
     xhr.send();
 
+    
+}
+
+function socialGay() {
+    let checkbox = document.getElementById('socialka');
+    if (checkbox.checked == true){
+        // alert(currentCom['socialDiscount']);
+        // alert(globSum);
+        // alert(currentCom["socialPrivileges"])
+        if( currentCom["socialPrivileges"] == true){
+            globSum = globSum *  (100 -currentCom["socialDiscount"]) / 100
+            
+            
+        }
+        else{
+            document.getElementById('socialka').disabled;
+        }
+    }
+    else{
+        if( currentCom["socialPrivileges"] == true){
+            globSum = globSum / (100 -currentCom["socialDiscount"]) *100
+            // alert(globSum);
+            
+        }
+        else{
+            document.getElementById('socialka').disabled;
+        }
+    }
+    document.getElementById('summary').innerHTML = globSum
+}
+
+function xTwo(params) {
     
 }
 
@@ -96,7 +141,7 @@ function createComBlock(company) {
 }
 
 function createComBlockforFilter(company) {
-    console.log(maketOfDude);
+    // console.log(maketOfDude);
     // let item = document.getElementById('companyItem-template').cloneNode(true);
     let item = maketOfDude.cloneNode(true);
     item.querySelector('.company-name').innerHTML = company['name'];
@@ -111,7 +156,7 @@ function createComBlockforFilter(company) {
     
     item.querySelector(".chooseButt").addEventListener('click', event => {createMenu(company['id'])} )
     item.classList.add("new"); //класс для последующего удаления в использовании фильтров
-    console.log(item);
+    // console.log(item);
     return item;
 
     
@@ -129,14 +174,17 @@ function sortByRate(array) {
         return 0;
       });
 }
+
 function createMenu(id){
     // alert(id);
     let menu = document.getElementById('gal');
     menu.style.display = 'block';
+    
 
     console.log(data);
     data.forEach(element => {
         if (element['id'] == id ){
+            currentCom = element;
             document.getElementById('set-1').innerHTML = element['set_1'] + " Р";
             document.getElementById('set-2').innerHTML = element['set_2'] + " Р";
             document.getElementById('set-3').innerHTML = element['set_3'] + " Р";
@@ -153,6 +201,7 @@ function createMenu(id){
     }); 
     
 }
+
 
 function addListenerFindBtn() {
 
@@ -195,8 +244,8 @@ function sortArray(array, district, area, type, discount) {
 
         
         
-        console.log(current['district'], current['admArea'], current['typeObject'], current['socialDiscount'] );
-        console.log(district, area, type, discount);
+        // console.log(current['district'], current['admArea'], current['typeObject'], current['socialDiscount'] );
+        // console.log(district, area, type, discount);
 
         if(district == "Не выбрано"){
             point = point + 1 
@@ -226,16 +275,16 @@ function sortArray(array, district, area, type, discount) {
             point = point + 1 
         }
         else{
-            if(current['socialDiscount'] == discount) {
+            if(current['socialDiscount'] > 0 ) {
             point = point + 1
             }
         }
         
         if(point == 4){ 
-            console.log(maketOfDude);
+            
             activeCounter = activeCounter + 1
             companyList.append(createComBlockforFilter(array[counter + 1]))
-            console.log("joopa")
+            
         }
     }
 }
