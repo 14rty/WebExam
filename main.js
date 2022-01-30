@@ -18,7 +18,7 @@ window.onload = function () {
 }
 
 let data
-let globSum
+let globSum = 0
 
 function setFunk(event) {
     let oper = event.target.innerHTML;
@@ -41,8 +41,15 @@ function setFunk(event) {
                     pole.innerHTML = Number(pole.innerHTML) - 1;
 
                     // alert(summary.innerHTML);
-                    summary.innerHTML = Number(summary.innerHTML) - price ;
-                    globSum = summary.innerHTML;
+                    if(document.getElementById('socialka').checked){
+                        summary.innerHTML = Number(summary.innerHTML) - price*((100 - currentCom["socialDiscount"])/100) ;
+                        globSum = summary.innerHTML;
+                    }
+                    else{
+                        summary.innerHTML = Number(summary.innerHTML) - price ;
+                        globSum = summary.innerHTML;
+                    }
+                   
                     // alert(summary.innerHTML);
                 }
             break
@@ -66,37 +73,85 @@ function GetInformationAboutCom() {
     xhr.responseType = 'json';
     xhr.onload = function () {
         console.log(this.response);
-        sortComElements(this.response);
+        getFirstComs(this.response);
+        getFilters(this.response);
         data = this.response
+
     }
     xhr.send();
 
     
 }
 
+function getFilters(restaurants) {
+    let AUs = new Set();
+    let districts = new Set();
+    let types = new Set();
+
+    for (let restaurant of restaurants) {
+        AUs.add(restaurant.admArea);
+        districts.add(restaurant.district);
+        types.add(restaurant.typeObject);
+    }
+
+    renderAUs(AUs);
+    renderDistricts(districts);
+    renderTypes(types);
+}
+
+function renderAUs(AUs) { //AU - administrative unit
+    let selector = document.querySelector("#select");
+    for (let AU of AUs) {
+        if (AU == null) continue;
+        let option = document.createElement("option");
+        option.innerHTML = AU;
+        selector.appendChild(option);
+    }
+}
+function renderDistricts(districts) {
+    let selector = document.querySelector("#selec");
+    for (let district of districts) {
+        if (district == null) continue;
+        let option = document.createElement("option");
+        option.innerHTML = district;
+        selector.appendChild(option);
+    }
+}
+function renderTypes(types) {
+    let selector = document.querySelector("#sele");
+    for (let type of types) {
+        if (type == null) continue;
+        let option = document.createElement("option");
+        option.innerHTML = type;
+        selector.appendChild(option);
+    }
+}
+
 function socialGay() {
     let checkbox = document.getElementById('socialka');
-    if (checkbox.checked == true){
-        // alert(currentCom['socialDiscount']);
-        // alert(globSum);
-        // alert(currentCom["socialPrivileges"])
-        if( currentCom["socialPrivileges"] == true){
-            globSum = globSum *  (100 -currentCom["socialDiscount"]) / 100
-            
-            
-        }
-        else{
-            document.getElementById('socialka').disabled;
-        }
-    }
-    else{
-        if( currentCom["socialPrivileges"] == true){
-            globSum = globSum / (100 -currentCom["socialDiscount"]) *100
+    if(globSum != 0){
+        if (checkbox.checked == true){
+            // alert(currentCom['socialDiscount']);
             // alert(globSum);
-            
+            // alert(currentCom["socialPrivileges"])
+            if( currentCom["socialPrivileges"] == true){
+                globSum = globSum *  (100 -currentCom["socialDiscount"]) / 100
+                
+                
+            }
+            else{
+                document.getElementById('socialka').style.disabled;
+            }
         }
         else{
-            document.getElementById('socialka').disabled;
+            if( currentCom["socialPrivileges"] == true){
+                globSum = globSum / (100 -currentCom["socialDiscount"]) *100
+                // alert(globSum);
+                
+            }
+            else{
+                document.getElementById('socialka').disabled;
+            }
         }
     }
     document.getElementById('summary').innerHTML = globSum
@@ -106,11 +161,11 @@ function xTwo(params) {
     
 }
 
-function sortComElements(array) {
+function getFirstComs(array) {
     let companyList = document.querySelector('.company-list');
     let counter = 0
     sortByRate(array);
-    while (counter < 5){
+    while (counter < 10){
         // for (let element of array) {
         //     companyList.append(createComBlock(element));
         // }
@@ -161,7 +216,7 @@ function createComBlockforFilter(company) {
 
     
 }
-
+let sortedByRateResponse 
 function sortByRate(array) { 
     array.sort()
     array.sort(function (a, b) {
@@ -173,6 +228,7 @@ function sortByRate(array) {
         }
         return 0;
       });
+    sortedByRateResponse = array;
 }
 
 function createMenu(id){
