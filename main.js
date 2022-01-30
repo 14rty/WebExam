@@ -9,6 +9,8 @@ window.onload = function () {
 // console.log(maketOfDude);
     addListenerFindBtn();
 
+    pagination()
+
     document.getElementById('socialka').addEventListener('change', socialGay);
 
     let menuButt = document.querySelectorAll('.menuButt');
@@ -275,74 +277,141 @@ function addListenerFindBtn() {
         var filter4 = document.getElementById("sel");
         var discount = filter4.options[filter4.selectedIndex].text;
 
-        sortArray(data, district, area, type, discount)
+        sortArray(sortedByRateResponse, district, area, type, discount)
     }));
 }
 
-function sortArray(array, district, area, type, discount) {
+function getCurFilters(){
+    var filter1 = document.getElementById("select");
+    var area = filter1.options[filter1.selectedIndex].text;
+
+    var filter2 = document.getElementById("selec");
+    var district = filter2.options[filter2.selectedIndex].text;
+
+    var filter3 = document.getElementById("sele");
+    var type = filter3.options[filter3.selectedIndex].text;
+
+    var filter4 = document.getElementById("sel");
+    var discount = filter4.options[filter4.selectedIndex].text;
+
+    let mas = [district, area, type, discount]
+    return mas
+}
+
+let paginationStart = 0
+let paginationMax = 0
+let paginationMin = 0
+let current = 0
+let currentElementsByFilters = 0
+function pagination(){
+    let pag1 = document.querySelector('.pag-butt-1');
+    let pag2 = document.querySelector('.pag-butt-2');
+    let pag3 = document.querySelector('.pag-butt-3');
+    let pag4 = document.querySelector('.pag-butt-4');
+    let pagPrevious = document.querySelector('.pag-butt-back');
+    let pageNext = document.querySelector('.pag-butt-next');
+
+    pagPrevious.addEventListener('click',event => {updatePaginationStart(-1)
+        clickPreviousPag(current,getPag())})
+    pageNext.addEventListener('click',event => {updatePaginationStart(1)
+        clickNextPag(current,getPag())})
+
+        pag1.addEventListener('click',event => {current = 1 + paginationStart
+            sortArray((0+paginationStart)*10,sortedByRateResponse, getCurFilters()[0], getCurFilters()[1], getCurFilters()[2], getCurFilters()[3])})
+        pag2.addEventListener('click',event => {current = 2 + paginationStart
+            sortArray((1+paginationStart)*10,sortedByRateResponse, getCurFilters()[0], getCurFilters()[1], getCurFilters()[2], getCurFilters()[3])})
+        pag3.addEventListener('click',event => {current = 3 + paginationStart
+            sortArray((2+paginationStart)*10,sortedByRateResponse, getCurFilters()[0], getCurFilters()[1], getCurFilters()[2], getCurFilters()[3])})
+        pag4.addEventListener('click',event => {current = 4 + paginationStart
+            sortArray((3+paginationStart)*10,sortedByRateResponse, getCurFilters()[0], getCurFilters()[1], getCurFilters()[2], getCurFilters()[3])})
+}
+function  clickPreviousPag(cur,pag){
+    alert("previous fun")
+    alert(cur);
+    if(cur - 1>paginationMin){
+        alert("previous click")
+        pag.click()
+    }
+}
+function  clickNextPag(cur,pag){
+    if(cur +1 <=paginationMax){
+        pag.click()
+    }
+}
+function getPag(){
+    let pag1 = document.querySelector('.pag-butt-1');
+    let pag2 = document.querySelector('.pag-butt-2');
+    let pag3 = document.querySelector('.pag-butt-3');
+    let pag4 = document.querySelector('.pag-butt-4');
+    if(paginationStart%4 == 0) return pag1
+    if(paginationStart%4 == 1) return pag2
+    if(paginationStart%4 == 2) return pag3
+    if(paginationStart%4 == 3) return pag4
+    return null
+
+}
+function updatePaginationStart(add){
+    paginationStart = paginationStart + add
+    if(paginationStart>paginationMax) {
+        paginationStart =currentElementsByFilters%10-1
+    }
+    if(paginationStart<paginationMin) {
+        paginationStart=0
+    }
+}
+
+function sortArray(nonActiveCounter,array, district, area, type, discount) {
     let companyList = document.querySelector('.company-list');
-    // companyList.remove(".new");
-    ///todo нужно очисть массив от прошлых данных companyList.remove()
+    alert("sort Array");
     let activeCounter = 0// это счетчик именно элементов массива которые удовлетворяют сортировки
+
     let counter = 0// индек элемента в массиве
     companyList.innerHTML = "";
-    while (activeCounter < 20 && counter < array.length - 2) {
+    alert(array)
+    while (counter < array.length - 2) {
         counter = counter + 1
         let current = array[counter + 1]
-        // if (current['district'] == district
-        //     && current['admArea'] == area
-        //     && current['typeObject'] == type
-        //     && current['socialDiscount'] == discount) {
-        //     activeCounter = activeCounter + 1
-        //     companyList.append(createComBlock(array[counter]))
-        // }
         let point = 0
 
-        
-        
-        // console.log(current['district'], current['admArea'], current['typeObject'], current['socialDiscount'] );
-        // console.log(district, area, type, discount);
+        if (district == "Не выбрано") {
+            point = point + 1
+        } else {
+            if (current['district'] == district) {
+                point = point + 1
+            }
+        }
+        if (area == "Не выбрано") {
+            point = point + 1
+        } else {
+            if (current['admArea'] == area) {
+                point = point + 1
+            }
+        }
+        if (type == "Не выбрано") {
+            point = point + 1
+        } else {
+            if (current['typeObject'] == type) {
+                point = point + 1
+            }
+        }
+        if (discount == "Не выбрано") {
+            point = point + 1
+        } else {
+            if (current['socialDiscount'] > 0) {
+                point = point + 1
+            }
+        }
+        if (point == 4) {
+            if(nonActiveCounter ==0 && activeCounter < 20) {
+                activeCounter = activeCounter + 1
+                companyList.append(createComBlockforFilter(array[counter + 1]))
+            }else{
+                nonActiveCounter = nonActiveCounter - 1
+            }
+        }
 
-        if(district == "Не выбрано"){
-            point = point + 1 
-        }
-        else{
-            if(current['district'] == district) {
-            point = point + 1
-            }
-        }
-        if(area == "Не выбрано"){
-            point = point + 1 
-        }
-        else{
-            if(current['admArea'] == area) {
-            point = point + 1
-            }
-        }
-        if(type == "Не выбрано"){
-            point = point + 1 
-        }
-        else{
-            if(current['typeObject'] == type) {
-            point = point + 1
-            }
-        }
-        if(discount == "Не выбрано"){
-            point = point + 1 
-        }
-        else{
-            if(current['socialDiscount'] > 0 ) {
-            point = point + 1
-            }
-        }
-        
-        if(point == 4){ 
-            
-            activeCounter = activeCounter + 1
-            companyList.append(createComBlockforFilter(array[counter + 1]))
-            
-        }
     }
+    currentElementsByFilters = activeCounter
 }
 
 
