@@ -12,15 +12,70 @@ window.onload = function () {
     pagination()
 
     document.getElementById('socialka').addEventListener('change', socialGuy);
+    document.getElementById('xTwo').addEventListener('change', xTwoDiscount);
 
     let menuButt = document.querySelectorAll('.menuButt');
     menuButt.forEach(function (btn) {
         btn.addEventListener('click', setFunk)
     })
+    
+    
 }
 
 let data
 let globSum = 0
+
+function xTwo(btn) {
+    if(btn != undefined ){
+        btn.innerHTML = Number(btn.innerHTML)*2
+    }
+    
+
+}
+
+function dTwo(btn) {
+    if(btn != undefined ){
+        btn.innerHTML = Number(btn.innerHTML)/2
+    }
+   
+    
+
+}
+
+function xTwoDiscount() {
+    let summary = document.getElementById('summary');
+    box = document.getElementById('xTwo')
+    let pole = document.querySelectorAll('.pole');
+    socialka = document.getElementById('socialka')
+    if(box.checked){
+        pole.forEach(function (btn) {
+            xTwo(btn)
+        })  
+        if(socialka.checked){
+            globSum =  globSum * (100 -currentCom["socialDiscount"]) /100
+        }
+        globSum = Number(Number(globSum)*1.6)
+    }
+    else{
+        pole.forEach(function (btn) {
+            dTwo(btn)
+            
+        })  
+        if(socialka.checked){
+            globSum =  globSum / (100 -currentCom["socialDiscount"]) *100
+        }
+        globSum = Number(Number(globSum) / 1.6)
+    }
+    summary.innerHTML = globSum;
+}
+
+function currentDiscount() {
+    disc = 1
+    if( document.getElementById('socialka').checked ){
+        disc = ( (100 - currentCom["socialDiscount"]) / 100 )
+    }
+    return disc;
+}
 
 function setFunk(event) {
     let oper = event.target.innerHTML;
@@ -30,17 +85,17 @@ function setFunk(event) {
     switch(oper){
         case '+':
             // alert("+")
-                pole.innerHTML = Number(pole.innerHTML) + 1;
+                pole.innerHTML = Number(pole.innerHTML) + 1*xTwoChecher();
 
                 // alert(summary.innerHTML);
-                summary.innerHTML = Number(summary.innerHTML) + price ;
+                summary.innerHTML = Number(summary.innerHTML) + price*currentDiscount() ;
                 globSum = summary.innerHTML;
                 // alert(summary.innerHTML);
             break
         case '-':
             // alert("-")
                 if (pole.innerHTML != 0 && pole.innerHTML != NaN){
-                    pole.innerHTML = Number(pole.innerHTML) - 1;
+                    pole.innerHTML = Number(pole.innerHTML) - 1*xTwoChecher();
 
                     // alert(summary.innerHTML);
                     if(document.getElementById('socialka').checked){
@@ -64,6 +119,15 @@ function setFunk(event) {
     // alert(oper);
 }
 
+function xTwoChecher() {
+    box = document.getElementById('xTwo')
+    if(box.checked){
+        return 2
+    }
+    else{
+        return 1
+    }
+}
 
 function GetInformationAboutCom() {
     let url_add = "http://exam-2022-1-api.std-900.ist.mospolytech.ru/api/restaurants";
@@ -137,19 +201,16 @@ function socialGuy() {
             // alert(globSum);
             // alert(currentCom["socialPrivileges"])
             if( currentCom["socialPrivileges"] == true){
+                
                 globSum = globSum *  (100 -currentCom["socialDiscount"]) / 100
-                
-                
             }
             else{
-                document.getElementById('socialka').style.disabled;
+                
             }
         }
         else{
             if( currentCom["socialPrivileges"] == true){
                 globSum = globSum / (100 -currentCom["socialDiscount"]) *100
-                // alert(globSum);
-                
             }
             else{
                 document.getElementById('socialka').disabled;
@@ -159,9 +220,7 @@ function socialGuy() {
     document.getElementById('summary').innerHTML = globSum
 }
 
-function xTwo(params) {
-    
-}
+
 
 function getFirstComs(array) {
     let companyList = document.querySelector('.company-list');
@@ -234,7 +293,12 @@ function createMenu(id){
     // alert(id);
     let menu = document.getElementById('gal');
     menu.style.display = 'block';
-    
+    if(currentCom["socialPrivileges"] == true){
+        document.getElementById('socialka').disabled = false;
+    }
+    else{
+        document.getElementById('socialka').disabled = true;
+    }
 
     console.log(data);
     data.forEach(element => {
@@ -495,7 +559,7 @@ function sortArray(nonActiveCounter, array, district, area, type, discount) {
             }
         }
         if (point == 4) {
-            if (nonActiveCounter == 0 && activeCounter < 20) {
+            if (nonActiveCounter == 0 && activeCounter < 10) {
                 activeCounter = activeCounter + 1
                 companyList.append(createComBlockforFilter(array[counter + 1]))
             } else {
