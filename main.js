@@ -11,7 +11,7 @@ window.onload = function () {
 
     pagination()
 
-    document.getElementById('socialka').addEventListener('change', socialGay);
+    document.getElementById('socialka').addEventListener('change', socialGuy);
 
     let menuButt = document.querySelectorAll('.menuButt');
     menuButt.forEach(function (btn) {
@@ -129,7 +129,7 @@ function renderTypes(types) {
     }
 }
 
-function socialGay() {
+function socialGuy() {
     let checkbox = document.getElementById('socialka');
     if(globSum != 0){
         if (checkbox.checked == true){
@@ -184,9 +184,7 @@ function createComBlock(company) {
     item.querySelector('.company-name').innerHTML = company['name'];
     item.querySelector('.company-type').innerHTML = company['typeObject'];
     item.querySelector('.company-address').innerHTML = company['address'];
-    item.querySelector('.company-admArea').innerHTML = company['admArea'];
-    item.querySelector('.company-district').innerHTML = company['district'];
-    item.querySelector('.company-discount').innerHTML = company['socialDiscount'];
+
     item.querySelector('.company-rating').innerHTML = "Рейтинг " + company['rate']/20;
     item.setAttribute('id', company['id']);
     item.classList.remove('d-none');
@@ -204,9 +202,8 @@ function createComBlockforFilter(company) {
     item.querySelector('.company-name').innerHTML = company['name'];
     item.querySelector('.company-type').innerHTML = company['typeObject'];
     item.querySelector('.company-address').innerHTML = company['address'];
-    item.querySelector('.company-admArea').innerHTML = company['admArea'];
-    item.querySelector('.company-district').innerHTML = company['district'];
-    item.querySelector('.company-discount').innerHTML = company['socialDiscount'];
+
+    
     item.querySelector('.company-rating').innerHTML = "Рейтинг " + company['rate']/20;
     item.setAttribute('id', company['id']);
     item.classList.remove('d-none');
@@ -299,11 +296,13 @@ function getCurFilters(){
 }
 
 let paginationStart = 0
-let paginationMax = 0
+let paginationMax = 4
 let paginationMin = 0
 let current = 0
 let currentElementsByFilters = 0
-function pagination(){
+let previousPag
+
+function pagination() {
     let pag1 = document.querySelector('.pag-butt-1');
     let pag2 = document.querySelector('.pag-butt-2');
     let pag3 = document.querySelector('.pag-butt-3');
@@ -311,63 +310,157 @@ function pagination(){
     let pagPrevious = document.querySelector('.pag-butt-back');
     let pageNext = document.querySelector('.pag-butt-next');
 
-    pagPrevious.addEventListener('click',event => {updatePaginationStart(-1)
-        clickPreviousPag(current,getPag())})
-    pageNext.addEventListener('click',event => {updatePaginationStart(1)
-        clickNextPag(current,getPag())})
+    pagPrevious.addEventListener('click', event => {
+        clickPreviousPag(current, getPrevPag())
 
-        pag1.addEventListener('click',event => {current = 1 + paginationStart
-            sortArray((0+paginationStart)*10,sortedByRateResponse, getCurFilters()[0], getCurFilters()[1], getCurFilters()[2], getCurFilters()[3])})
-        pag2.addEventListener('click',event => {current = 2 + paginationStart
-            sortArray((1+paginationStart)*10,sortedByRateResponse, getCurFilters()[0], getCurFilters()[1], getCurFilters()[2], getCurFilters()[3])})
-        pag3.addEventListener('click',event => {current = 3 + paginationStart
-            sortArray((2+paginationStart)*10,sortedByRateResponse, getCurFilters()[0], getCurFilters()[1], getCurFilters()[2], getCurFilters()[3])})
-        pag4.addEventListener('click',event => {current = 4 + paginationStart
-            sortArray((3+paginationStart)*10,sortedByRateResponse, getCurFilters()[0], getCurFilters()[1], getCurFilters()[2], getCurFilters()[3])})
+    })
+    pageNext.addEventListener('click', event => {
+        clickNextPag(current, getNextPag())
+
+    })
+
+    pag1.addEventListener('click', event => {
+        updatePaginationStart(paginationMin + 1)
+        setVisualClickPag(pag1, previousPag)
+        previousPag = pag1
+        sortArray((current - 1) * 10, sortedByRateResponse, getCurFilters()[0], getCurFilters()[1], getCurFilters()[2], getCurFilters()[3])
+
+    })
+    pag2.addEventListener('click', event => {
+        updatePaginationStart(paginationMin + 2)
+        setVisualClickPag(pag2, previousPag)
+        previousPag = pag2
+        sortArray((current - 1) * 10, sortedByRateResponse, getCurFilters()[0], getCurFilters()[1], getCurFilters()[2], getCurFilters()[3])
+
+    })
+    pag3.addEventListener('click', event => {
+        updatePaginationStart(paginationMin + 3)
+        setVisualClickPag(pag3, previousPag)
+        previousPag = pag3
+        sortArray((current - 1) * 10, sortedByRateResponse, getCurFilters()[0], getCurFilters()[1], getCurFilters()[2], getCurFilters()[3])
+
+    })
+    pag4.addEventListener('click', event => {
+        updatePaginationStart(paginationMin + 4)
+        setVisualClickPag(pag4, previousPag)
+        previousPag = pag4
+        sortArray((current - 1) * 10, sortedByRateResponse, getCurFilters()[0], getCurFilters()[1], getCurFilters()[2], getCurFilters()[3])
+
+    })
 }
-function  clickPreviousPag(cur,pag){
-    alert("previous fun")
-    alert(cur);
-    if(cur - 1>paginationMin){
-        alert("previous click")
+
+function clickPreviousPag(cur, pag) {
+    // alert("previous fun",cur)
+    //  alert("previous click")
+
+    /* alert(paginationMin)
+     alert(cur)
+     alert(paginationStart)*/
+    //  alert("nsdsdfggdfs")
+    if (cur - 1 > 0) {
+        if (cur - 1 <= paginationMin) {
+            paginationMin -= 4
+            paginationMax -= 4
+            let pag1 = document.querySelector('.pag-butt-1');
+            let pag2 = document.querySelector('.pag-butt-2');
+            let pag3 = document.querySelector('.pag-butt-3');
+            let pag4 = document.querySelector('.pag-butt-4');
+            pag1.innerHTML = Number(pag1.innerHTML) - 4
+            pag2.innerHTML = Number(pag2.innerHTML) - 4
+            pag3.innerHTML = Number(pag3.innerHTML) - 4
+            pag4.innerHTML = Number(pag4.innerHTML) - 4
+        }
         pag.click()
     }
 }
-function  clickNextPag(cur,pag){
-    if(cur +1 <=paginationMax){
-        pag.click()
-    }
+
+function df() {
+
 }
-function getPag(){
+
+function setVisualClickPag(curPag, prevPag) {
+    // alert("setVisualClickPag click")
+    // alert(curPag)
+    // alert(curPag.style.backgroundColor)
+    if (prevPag != undefined) prevPag.style.backgroundColor = "white"
+    curPag.style.backgroundColor = "grey"
+    /// alert(curPag.style.backgroundColor)
+
+}
+
+function clickNextPag(cur, pag) {
+
+    if (Number(cur) >= Number(paginationMax)) {
+        paginationMax += 4
+        paginationMin += 4
+        let pag1 = document.querySelector('.pag-butt-1');
+        let pag2 = document.querySelector('.pag-butt-2');
+        let pag3 = document.querySelector('.pag-butt-3');
+        let pag4 = document.querySelector('.pag-butt-4');
+        pag1.innerHTML = Number(pag1.innerHTML) + 4
+        pag2.innerHTML = Number(pag2.innerHTML) + 4
+        pag3.innerHTML = Number(pag3.innerHTML) + 4
+        pag4.innerHTML = Number(pag4.innerHTML) + 4
+    }
+    pag.click()
+}
+
+function getPrevPag(cur) {
+    /*  alert("sdf")
+      alert(paginationStart)
+      alert("sdf")*/
     let pag1 = document.querySelector('.pag-butt-1');
     let pag2 = document.querySelector('.pag-butt-2');
     let pag3 = document.querySelector('.pag-butt-3');
     let pag4 = document.querySelector('.pag-butt-4');
-    if(paginationStart%4 == 0) return pag1
-    if(paginationStart%4 == 1) return pag2
-    if(paginationStart%4 == 2) return pag3
-    if(paginationStart%4 == 3) return pag4
+    if ((current - 2) % 4 == 0) return pag1
+    if ((current - 2) % 4 == 1) return pag2
+    if ((current - 2) % 4 == 2) return pag3
+    if ((current - 2) % 4 == 3) return pag4
     return null
 
 }
-function updatePaginationStart(add){
-    paginationStart = paginationStart + add
-    if(paginationStart>paginationMax) {
-        paginationStart =currentElementsByFilters%10-1
+
+function getNextPag(cur) {
+    /*  alert("sdf")
+      alert(paginationStart)
+      alert("sdf")*/
+    let pag1 = document.querySelector('.pag-butt-1');
+    let pag2 = document.querySelector('.pag-butt-2');
+    let pag3 = document.querySelector('.pag-butt-3');
+    let pag4 = document.querySelector('.pag-butt-4');
+    if ((current) % 4 == 0) return pag1
+    if ((current) % 4 == 1) return pag2
+    if ((current) % 4 == 2) return pag3
+    if ((current) % 4 == 3) return pag4
+    return null
+
+}
+
+function updatePaginationStart(add) {
+    current = add
+
+    if (current > paginationMax) {
+        // current = currentElementsByFilters % 10 - 1
     }
-    if(paginationStart<paginationMin) {
-        paginationStart=0
+
+    if (current < paginationMin) {
+        //  current = paginationMin - 1
+    }
+    if (current < 0) {
+        current = 0
     }
 }
 
-function sortArray(nonActiveCounter,array, district, area, type, discount) {
+function sortArray(nonActiveCounter, array, district, area, type, discount) {
+    //  alert("sort Array")
     let companyList = document.querySelector('.company-list');
-    alert("sort Array");
+
     let activeCounter = 0// это счетчик именно элементов массива которые удовлетворяют сортировки
 
     let counter = 0// индек элемента в массиве
     companyList.innerHTML = "";
-    alert(array)
+    //  alert(array)
     while (counter < array.length - 2) {
         counter = counter + 1
         let current = array[counter + 1]
@@ -402,10 +495,10 @@ function sortArray(nonActiveCounter,array, district, area, type, discount) {
             }
         }
         if (point == 4) {
-            if(nonActiveCounter ==0 && activeCounter < 20) {
+            if (nonActiveCounter == 0 && activeCounter < 20) {
                 activeCounter = activeCounter + 1
                 companyList.append(createComBlockforFilter(array[counter + 1]))
-            }else{
+            } else {
                 nonActiveCounter = nonActiveCounter - 1
             }
         }
