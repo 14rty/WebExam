@@ -49,6 +49,16 @@
     </header>
     <!-- NavBar Ending -->
     <main>
+        <!-- Уведомление -->
+        <div class="myToast align-items-center text-white bg-danger border-0" style="display: none;" id="myToast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+              <div class="toast-body">
+                Спасибо за заказ, в течении пары минут с вами свяжется оператор.
+              </div>
+              <button type="button" class="btn-close btn-close-white me-2 m-auto" id="closeToast"  aria-label="Close"></button>
+            </div>
+          </div>
+        <!-- Конец уведомления -->
         <!-- Карусель -->
         <div style="display: flex; justify-content: space-around;" class="py-5">
             <div id="carouselExampleSlidesOnly" class="carousel slide col-lg-5 col-md-12" data-bs-ride="carousel">
@@ -164,7 +174,7 @@
 
                         <div class="">
                             <span class="invisible">Костыль</span><br>
-                            <input class="poisk" type="button" style="width: 120px;" value="Найти">
+                            <input class="poisk btn-outline-danger" type="button" style="width: 120px;" value="Найти">
                         </div>
 
                     </div>
@@ -193,7 +203,7 @@
                             <div class="col-12 col-xl-6 company-address">Адрес</div>
                             <div class="col-12 col-xl-1 company-buttons d-flex justify-content-end">
                                 <a href="#gal"><button
-                                        class="btn btn-outline-primary btn-sm chooseButt">Выбрать</button></a>
+                                        class="btn btn-outline-danger btn-sm chooseButt">Выбрать</button></a>
                             </div>
 
                             <div class="company-rating "></div>
@@ -201,22 +211,22 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-center py-3">
-                    <div style="height: 38px" class="page-item pag-butt-back border">
-                        <p  style="justify-content: space-around; text-align: center; user-select: none;">Предыдущая</p>
+                    <div style="height: 38px" class=" pt-1 page-item pag-butt-back border border-end-0 border-1 rounded-start btn-outline-danger border-danger">
+                        <p style="justify-content: space-around; text-align: center; user-select: none;">Предыдущая</p>
                     </div>
-                    <div style="width: 38px;height: 38px; text-align: center;" class="page-item pag-butt-1 border">
+                    <div style="width: 38px;height: 38px; text-align: center; user-select: none;" class="pt-1 page-item pag-butt-1 border border-end-0 border-1  border-danger">
                         1
                     </div>
-                    <div style="width: 38px;height: 38px; text-align: center;" class="page-item pag-butt-2 border" aria-current="page">
+                    <div style="width: 38px;height: 38px; text-align: center; user-select: none;" class="pt-1 page-item pag-butt-2 border border-end-0 border-1   border-danger" aria-current="page">
                         2
                     </div>
-                    <div style="width: 38px;height: 38px;  text-align: center;" class="page-item pag-butt-3 border">
+                    <div style="width: 38px;height: 38px;  text-align: center; user-select: none;" class="pt-1 page-item pag-butt-3 border border-end-0 border-1  border-danger">
                         3
                     </div>
-                    <div style="width: 38px;height: 38px;  text-align: center;" class="page-item pag-butt-4 border">
+                    <div style="width: 38px;height: 38px;  text-align: center; user-select: none;" class="pt-1 page-item pag-butt-4 border border-1  border-danger">
                         4
                     </div>
-                    <div style="height: 38px" class="page-item pag-butt-next border">
+                    <div style="height: 38px" class="pt-1 page-item pag-butt-next btn-outline-danger border border-start-0 border-1 rounded-end border-danger">
                         <p  style=" text-align: center; user-select: none;" >Следующая</p>
                     </div>
                 </div>
@@ -435,7 +445,7 @@
 
             <div class="d-flex row justify-content-between    my-3 py-2 px-2 border border-4 border-top-0">
                 <h1>Итого:<span class=" fs-1" id="summary"></span></h1>
-                <input type="button" value="Оформить заказ">
+                <input class="btn-outline-danger" type="button" value="Оформить заказ" id="place" onclick="location.href='#';">
             </div>
 
 
