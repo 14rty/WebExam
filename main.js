@@ -345,7 +345,8 @@ function appendPositions() {
         let actualDesc = menuInformation[i].desc
 
         let img = element.querySelector('.rounded');
-        img.src = img.src + actualImg
+        // img.src = img.src + actualImg
+        img.src = actualImg
 
         let menuTitle = element.querySelector('.card-title')
         menuTitle.innerHTML = actualName
@@ -361,52 +362,52 @@ let menuInformation = [
     {
         'name': 'Салат "Цезарь"',
         'desc': 'Классический салат',
-        'image': 'menuPic1Fixed.jpg'
+        'image': 'pics/menuPic1Fixed.jpg'
     },
     {
         'name': 'Панакотта',
         'desc': 'Классический десерт',
-        'image': 'menuPic2Fixed.jpg'
+        'image': 'pics/menuPic2Fixed.jpg'
     },
     {
         'name': 'Паста с сыром',
         'desc': 'Как в общаге',
-        'image': 'menuPic3Fixed.jpg'
+        'image': 'pics/menuPic3Fixed.jpg'
     },
     {
         'name': 'Гренки с чесноком',
         'desc': 'Идеальная закуска',
-        'image': 'menuPic4FIxed.jpg'
+        'image': 'pics/menuPic4FIxed.jpg'
     },
     {
         'name': 'Светлое пиво',
         'desc': 'Освежающий в летний день напиток',
-        'image': 'menuPic5FIxed.jpg'
+        'image': 'pics/menuPic5FIxed.jpg'
     },
     {
         'name': 'Темное пиво',
         'desc': 'Для того, чтобы проникнуться бесконечно вечным',
-        'image': 'menuPic6FIxed.jpg'
+        'image': 'pics/menuPic6FIxed.jpg'
     },
     {
         'name': 'Живое пиво',
         'desc': 'Животворящий божественный нектар ',
-        'image': 'menuPic7FIxed.jpg'
+        'image': 'pics/menuPic7FIxed.jpg'
     },
     {
         'name': 'Ореховый микс',
         'desc': 'Фисташки, фундук, кешью',
-        'image': 'menuPic8FIxed.jpg'
+        'image': 'pics/menuPic8FIxed.jpg'
     },
     {
         'name': 'Котлета с пюре',
         'desc': 'Как в родной деревне',
-        'image': 'menuPic9FIxed.jpg'
+        'image': 'pics/menuPic9FIxed.jpg'
     },
     {
         'name': 'Нарезка из оругцов',
         'desc': 'Сердито',
-        'image': 'menuPic10Fixed.jpg'
+        'image': 'pics/menuPic10Fixed.jpg'
     },
 ]
 
