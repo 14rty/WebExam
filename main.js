@@ -1,17 +1,16 @@
-let maketOfDude
+let maketBuddy
 let currentCom = 0;
 window.onload = function () {
-    // let findButt = document.querySelector('.poisk');
-    // findButt.addEventListener('click', GetInformationAboutCom); 
-    maketOfDude = document.getElementById('companyItem-template').cloneNode(true);
+ 
+    maketBuddy = document.getElementById('companyItem-template').cloneNode(true);
 
     GetInformationAboutCom();
-// console.log(maketOfDude);
+
     addListenerFindBtn();
 
     pagination()
 
-    document.getElementById('socialka').addEventListener('change', socialGuy);
+    document.getElementById('social').addEventListener('change', makeSocialDiscount);
     document.getElementById('xTwo').addEventListener('change', xTwoDiscount);
 
     let menuButt = document.querySelectorAll('.menuButt');
@@ -57,7 +56,7 @@ function xTwoDiscount() {
     let summary = document.getElementById('summary');
     box = document.getElementById('xTwo')
     let pole = document.querySelectorAll('.pole');
-    socialka = document.getElementById('socialka')
+    socialka = document.getElementById('social')
     if(box.checked){
         pole.forEach(function (btn) {
             xTwo(btn)
@@ -82,7 +81,7 @@ function xTwoDiscount() {
 
 function currentDiscount() {
     disc = 1
-    if( document.getElementById('socialka').checked ){
+    if( document.getElementById('social').checked ){
         disc = ( (100 - currentCom["socialDiscount"]) / 100 )
     }
     return disc;
@@ -95,21 +94,18 @@ function setFunk(event) {
     let summary = document.getElementById('summary');
     switch(oper){
         case '+':
-            // alert("+")
+
                 pole.innerHTML = Number(pole.innerHTML) + 1*xTwoChecher();
 
-                // alert(summary.innerHTML);
                 summary.innerHTML = Number(summary.innerHTML) + price*currentDiscount() ;
                 globSum = summary.innerHTML;
-                // alert(summary.innerHTML);
             break
         case '-':
-            // alert("-")
+           
                 if (pole.innerHTML != 0 && pole.innerHTML != NaN){
                     pole.innerHTML = Number(pole.innerHTML) - 1*xTwoChecher();
 
-                    // alert(summary.innerHTML);
-                    if(document.getElementById('socialka').checked){
+                    if(document.getElementById('social').checked){
                         summary.innerHTML = Number(summary.innerHTML) - price*((100 - currentCom["socialDiscount"])/100) ;
                         globSum = summary.innerHTML;
                     }
@@ -118,7 +114,6 @@ function setFunk(event) {
                         globSum = summary.innerHTML;
                     }
                    
-                    // alert(summary.innerHTML);
                 }
             break
     }
@@ -126,8 +121,6 @@ function setFunk(event) {
         pole.innerHTML = "";
     }
     
-
-    // alert(oper);
 }
 
 function xTwoChecher() {
@@ -204,13 +197,11 @@ function renderTypes(types) {
     }
 }
 
-function socialGuy() {
-    let checkbox = document.getElementById('socialka');
+function makeSocialDiscount() {
+    let checkbox = document.getElementById('social');
     if(globSum != 0){
         if (checkbox.checked == true){
-            // alert(currentCom['socialDiscount']);
-            // alert(globSum);
-            // alert(currentCom["socialPrivileges"])
+            
             if( currentCom["socialPrivileges"] == true){
                 
                 globSum = globSum *  (100 -currentCom["socialDiscount"]) / 100
@@ -224,7 +215,7 @@ function socialGuy() {
                 globSum = globSum / (100 -currentCom["socialDiscount"]) *100
             }
             else{
-                document.getElementById('socialka').disabled;
+                document.getElementById('social').disabled;
             }
         }
     }
@@ -238,9 +229,7 @@ function getFirstComs(array) {
     let counter = 0
     sortByRate(array);
     while (counter < 10){
-        // for (let element of array) {
-        //     companyList.append(createComBlock(element));
-        // }
+        
         counter = counter + 1
         companyList.append(createComBlock(array[counter]))
     }
@@ -249,8 +238,6 @@ function getFirstComs(array) {
 
 function createComBlock(company) {
     let item = document.getElementById('companyItem-template').cloneNode(true);
-    // let item = maketOfDude.cloneNode(true);
-    
     item.querySelector('.company-name').innerHTML = company['name'];
     item.querySelector('.company-type').innerHTML = company['typeObject'];
     item.querySelector('.company-address').innerHTML = company['address'];
@@ -259,16 +246,15 @@ function createComBlock(company) {
     item.setAttribute('id', company['id']);
     item.classList.remove('d-none');
     item.querySelector(".chooseButt").addEventListener('click', event => {createMenu(company['id'])} )
-    item.classList.add("new"); //класс для последующего удаления в использовании фильтров
+    item.classList.add("new");
     return item;
 
     
 }
 
 function createComBlockforFilter(company) {
-    // console.log(maketOfDude);
-    // let item = document.getElementById('companyItem-template').cloneNode(true);
-    let item = maketOfDude.cloneNode(true);
+
+    let item = maketBuddy.cloneNode(true);
     item.querySelector('.company-name').innerHTML = company['name'];
     item.querySelector('.company-type').innerHTML = company['typeObject'];
     item.querySelector('.company-address').innerHTML = company['address'];
@@ -281,7 +267,7 @@ function createComBlockforFilter(company) {
     
     item.querySelector(".chooseButt").addEventListener('click', event => {createMenu(company['id'])} )
     item.classList.add("new"); //класс для последующего удаления в использовании фильтров
-    // console.log(item);
+ 
     return item;
 
     
@@ -303,15 +289,15 @@ function sortByRate(array) {
 }
 
 function createMenu(id){
-    // alert(id);
+
     let menu = document.getElementById('gal');
     menu.style.display = 'block';
     appendPositions();
     if(currentCom["socialPrivileges"] == true){
-        document.getElementById('socialka').disabled = false;
+        document.getElementById('social').disabled = false;
     }
     else{
-        document.getElementById('socialka').disabled = true;
+        document.getElementById('social').disabled = true;
     }
 
     console.log(data);
@@ -338,14 +324,14 @@ function createMenu(id){
 function appendPositions() {
     let actualCard = document.querySelectorAll(".menuElem")
     let i = 0;
-    // alert(actualCard[2])
+
     actualCard.forEach(function (element) {
+
         let actualImg = menuInformation[i].image
         let actualName = menuInformation[i].name
         let actualDesc = menuInformation[i].desc
 
         let img = element.querySelector('.rounded');
-        // img.src = img.src + actualImg
         img.src = actualImg
 
         let menuTitle = element.querySelector('.card-title')
@@ -353,6 +339,7 @@ function appendPositions() {
 
         let menuDesc = element.querySelector('.card-desc-boy');
         menuDesc.innerHTML = actualDesc
+
         i += 1;
     })  
     
@@ -503,13 +490,7 @@ function pagination() {
 }
 
 function clickPreviousPag(cur, pag) {
-    // alert("previous fun",cur)
-    //  alert("previous click")
-
-    /* alert(paginationMin)
-     alert(cur)
-     alert(paginationStart)*/
-    //  alert("nsdsdfggdfs")
+  
     if (cur - 1 > 0) {
         if (cur - 1 <= paginationMin) {
             paginationMin -= 4
@@ -532,15 +513,13 @@ function df() {
 }
 
 function setVisualClickPag(curPag, prevPag) {
-    // alert("setVisualClickPag click")
-    // alert(curPag)
-    // alert(curPag.style.backgroundColor)
+
     if (prevPag != undefined){ 
         prevPag.style.backgroundColor = "white"
         prevPag.style.color = "black"
         curPag.style.backgroundColor = "#dc3545"}
         curPag.style.color = "white"
-    /// alert(curPag.style.backgroundColor)
+
 
 }
 
@@ -562,9 +541,7 @@ function clickNextPag(cur, pag) {
 }
 
 function getPrevPag(cur) {
-    /*  alert("sdf")
-      alert(paginationStart)
-      alert("sdf")*/
+
     let pag1 = document.querySelector('.pag-butt-1');
     let pag2 = document.querySelector('.pag-butt-2');
     let pag3 = document.querySelector('.pag-butt-3');
@@ -578,9 +555,7 @@ function getPrevPag(cur) {
 }
 
 function getNextPag(cur) {
-    /*  alert("sdf")
-      alert(paginationStart)
-      alert("sdf")*/
+
     let pag1 = document.querySelector('.pag-butt-1');
     let pag2 = document.querySelector('.pag-butt-2');
     let pag3 = document.querySelector('.pag-butt-3');
@@ -594,29 +569,23 @@ function getNextPag(cur) {
 }
 
 function updatePaginationStart(add) {
+
     current = add
 
-    if (current > paginationMax) {
-        // current = currentElementsByFilters % 10 - 1
-    }
-
-    if (current < paginationMin) {
-        //  current = paginationMin - 1
-    }
     if (current < 0) {
         current = 0
     }
 }
 
 function sortArray(nonActiveCounter, array, district, area, type, discount) {
-    //  alert("sort Array")
+
     let companyList = document.querySelector('.company-list');
 
-    let activeCounter = 0// это счетчик именно элементов массива которые удовлетворяют сортировки
+    let activeCounter = 0// это счетчик элементов массива которые удовлетворяют сортировки
 
     let counter = 0// индек элемента в массиве
     companyList.innerHTML = "";
-    //  alert(array)
+
     while (counter < array.length - 2) {
         counter = counter + 1
         let current = array[counter + 1]
