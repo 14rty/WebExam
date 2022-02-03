@@ -1,0 +1,26 @@
+
+.myToast{
+    display: none;
+}
+
+.carrusel{
+    display: flex;
+    justify-content: space-around;
+}
+.garant{
+    justify-content: space-around;
+    text-align: center;
+}
+.gal{
+    display: none;
+}
+.subMenu{
+    justify-content: space-around;
+    text-align: center;
+}
+.priceDop{
+    text-align: center;
+}
+.checks{
+    max-width: fit-content;
+}

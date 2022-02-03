@@ -11,6 +11,7 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <title>Jumpy</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -50,7 +51,7 @@
     <!-- NavBar Ending -->
     <main>
         <!-- Уведомление -->
-        <div class="myToast align-items-center text-white bg-danger border-0" style="display: none;" id="myToast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="myToast align-items-center text-white bg-danger border-0"  id="myToast" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="d-flex">
               <div class="toast-body">
                 Спасибо за заказ, в течении пары минут с вами свяжется оператор.
@@ -60,7 +61,7 @@
           </div>
         <!-- Конец уведомления -->
         <!-- Карусель -->
-        <div style="display: flex; justify-content: space-around;" class="py-5">
+        <div class="py-5 carrusel">
             <div id="carouselExampleSlidesOnly" class="carousel slide col-lg-5 col-md-12" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active" data-bs-interval="2200">
@@ -83,7 +84,7 @@
                 <h2 class="mb-3">Почему именно мы?</h2>
                 <div class="heading-line mx-auto bg-dark"></div>
             </div>
-            <div class="row d-flex" style="justify-content: space-around; text-align: center;">
+            <div class="row garant d-flex">
                 <div class="col-lg-4 col-md-6 p-0 dark">
                     <div class="card-body">
                         <img src="pics/DELI100.png" width="100px" alt="logo">
@@ -236,13 +237,13 @@
         <!-- Конец Формы -->
 
         <!-- Меню -->
-        <section class="gal container-fluid bg-light" style="display: none;" id="gal">
+        <section class="gal container-fluid bg-light" id="gal">
             <div class="text-center py-5">
                 <h2 class="mb-3">Меню:</h2>
                 <div class="heading-line mx-auto bg-dark"></div>
             </div>
 
-            <div class="row d-flex" style="justify-content: space-around; text-align: center;">
+            <div class="row d-flex subMenu">
                 <div class="col-lg-4 col-md-6 p-0 dark">
                     <div class="card-body">
                         <img src="pics/menuPic1Fixed.jpg" width="200px" alt="logo" class="rounded">
@@ -424,18 +425,18 @@
         <!-- Цена -->
         <section class="contacts container">
             <div class="text-left py-5">
-                <h2 class="mb-3" style="text-align: center">Дополнительные опции</h2>
+                <h2 class="mb-3 priceDop">Дополнительные опции</h2>
                 <div class="heading-line mx-auto bg-dark"></div>
                 <div class="heading-line mx-auto"></div>
             </div>
             <div class="d-flex row justify-content-around border border-4 border-bottom-0">
-                <div style="max-width: fit-content;">
+                <div class="checks">
                     <label>
                         Социальная скидка
                     </label>
                     <input type="checkbox" id="socialka" value="">
                 </div>
-                <div style="max-width: fit-content;">
+                <div class="checks">
                     <label>
                         В два раза больше
                     </label>
