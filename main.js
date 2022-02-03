@@ -276,6 +276,7 @@ function createComBlockforFilter(company) {
     
     item.querySelector('.company-rating').innerHTML = "Рейтинг " + company['rate']/20;
     item.setAttribute('id', company['id']);
+
     item.classList.remove('d-none');
     
     item.querySelector(".chooseButt").addEventListener('click', event => {createMenu(company['id'])} )
@@ -285,6 +286,7 @@ function createComBlockforFilter(company) {
 
     
 }
+
 let sortedByRateResponse 
 function sortByRate(array) { 
     array.sort()
@@ -304,6 +306,7 @@ function createMenu(id){
     // alert(id);
     let menu = document.getElementById('gal');
     menu.style.display = 'block';
+    appendPositions();
     if(currentCom["socialPrivileges"] == true){
         document.getElementById('socialka').disabled = false;
     }
@@ -332,6 +335,80 @@ function createMenu(id){
     
 }
 
+function appendPositions() {
+    let actualCard = document.querySelectorAll(".menuElem")
+    let i = 0;
+    // alert(actualCard[2])
+    actualCard.forEach(function (element) {
+        let actualImg = menuInformation[i].image
+        let actualName = menuInformation[i].name
+        let actualDesc = menuInformation[i].desc
+
+        let img = element.querySelector('.rounded');
+        img.src = img.src + actualImg
+
+        let menuTitle = element.querySelector('.card-title')
+        menuTitle.innerHTML = actualName
+
+        let menuDesc = element.querySelector('.card-desc-boy');
+        menuDesc.innerHTML = actualDesc
+        i += 1;
+    })  
+    
+}
+
+let menuInformation = [
+    {
+        'name': 'Салат "Цезарь"',
+        'desc': 'Классический салат',
+        'image': 'menuPic1Fixed.jpg'
+    },
+    {
+        'name': 'Панакотта',
+        'desc': 'Классический десерт',
+        'image': 'menuPic2Fixed.jpg'
+    },
+    {
+        'name': 'Паста с сыром',
+        'desc': 'Как в общаге',
+        'image': 'menuPic3Fixed.jpg'
+    },
+    {
+        'name': 'Гренки с чесноком',
+        'desc': 'Идеальная закуска',
+        'image': 'menuPic4FIxed.jpg'
+    },
+    {
+        'name': 'Светлое пиво',
+        'desc': 'Освежающий в летний день напиток',
+        'image': 'menuPic5FIxed.jpg'
+    },
+    {
+        'name': 'Темное пиво',
+        'desc': 'Для того, чтобы проникнуться бесконечно вечным',
+        'image': 'menuPic6FIxed.jpg'
+    },
+    {
+        'name': 'Живое пиво',
+        'desc': 'Животворящий божественный нектар ',
+        'image': 'menuPic7FIxed.jpg'
+    },
+    {
+        'name': 'Ореховый микс',
+        'desc': 'Фисташки, фундук, кешью',
+        'image': 'menuPic8FIxed.jpg'
+    },
+    {
+        'name': 'Котлета с пюре',
+        'desc': 'Как в родной деревне',
+        'image': 'menuPic9FIxed.jpg'
+    },
+    {
+        'name': 'Нарезка из оругцов',
+        'desc': 'Сердито',
+        'image': 'menuPic10Fixed.jpg'
+    },
+]
 
 function addListenerFindBtn() {
 
